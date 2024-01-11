@@ -63,7 +63,9 @@ function triggerSkulls() {
         if (size > 300) {
             clearInterval(skullInterval);
             document.body.removeChild(skullElement);
-            // createBloodSplash(window.innerWidth / 2, window.innerHeight / 2);  
+            // Inside triggerSkulls, after the skull disappears
+            triggerBloodDrip();
+
         }
     }, 100);
 }
@@ -81,8 +83,27 @@ function clearEffects() {
     });
 }
 
+function triggerBloodDrip() {
+    const dripCount = 20; // Number of droplets
+    for (let i = 0; i < dripCount; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('blood-drop');
 
+        const size = Math.random() * 5 + 2; // Random size between 2 and 7px
+        drop.style.width = `${size}px`;
+        drop.style.height = `${size * 3}px`; // Make droplets elongated
 
+        const delay = Math.random() * 5; // Random delay between 0 and 5 seconds
+        const duration = Math.random() * 2 + 3; // Duration between 3 and 5 seconds
+        const leftPosition = Math.random() * 100; // Random position across the width of the screen
 
+        drop.style.left = `${leftPosition}vw`;
+        drop.style.animationDuration = `${duration}s`;
+        drop.style.animationDelay = `${delay}s`;
 
+        document.body.appendChild(drop);
 
+        // Remove droplet after animation completes
+        setTimeout(() => drop.remove(), (delay + duration) * 1000);
+    }
+}

@@ -19,11 +19,3 @@ form label{
     margin: 10px auto;
     padding: 4px;
 }
-
-canvas {
-	cursor: crosshair;
-	display: block;
-    height: 1000;
-    width: max-content;
-}
-
