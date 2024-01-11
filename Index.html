@@ -8,20 +8,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
 </head>
 
 <body>
-    <form action="">
-        <label for="total"> 総単元数: <input id="total" type="number" onchange="calculatePercent()"></label>
-        <br>
-        <label for="missed"> 欠席回数: <input id="missed" type="number" onchange="calculatePercent()"> </label>
-        <br>
-        <label for="late"> 遅刻回数: <input id="late" type="number" onchange="calculatePercent()"> </label>
-        <div id="result"></div>
-    </form>
-    <script src="./script.js"></script>
+    <div class="content">
+        <form action="">
+            <label for="total"> 総単元数: <input id="total" type="number" value="10" onchange="calculatePercent()"></label>
+            <br>
+            <label for="missed"> 欠席回数: <input id="missed" type="number" value="5" onchange="calculatePercent()"> </label>
+            <br>
+            <label for="late"> 遅刻回数: <input id="late" type="number" onchange="calculatePercent()"> </label>
+            <div id="result"></div>
+        </form>
+    </div>
+    
+    <div id="new-content" style="display: none;">
+        <div class="content">
 
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+
+	<div class="text">まじ<br>オワタ</div>
+
+</div>
+    </div>
+    
+    <script src="./script.js"></script>
 </body>
 
 </html>

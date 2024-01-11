@@ -18,6 +18,11 @@ function calculatePercent() {
             triggerFireworks();
         } else if (percent < 50) {
             triggerSkulls();
+        } else if (percent >= 50) {
+            var elementsToRemove = document.querySelectorAll("#skull");
+            elementsToRemove.forEach(function (element) {
+                element.remove();
+            });
         }
     } else {
         document.getElementById("result").innerHTML = "Total must be greater than 0";
@@ -35,11 +40,6 @@ function triggerFireworks() {
 
     confettiInterval = setInterval(function () {
         var timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-            return clearInterval(confettiInterval);
-        }
-
         var particleCount = 50 * (timeLeft / duration);
         confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 } }));
     }, 250);
@@ -47,6 +47,7 @@ function triggerFireworks() {
 
 function triggerSkulls() {
     var skullElement = document.createElement("div");
+    skullElement.id = "skull";
     skullElement.innerHTML = "💀";
     skullElement.style.position = "fixed";
     skullElement.style.left = "50%";
@@ -57,15 +58,16 @@ function triggerSkulls() {
 
     var size = 1;
     skullInterval = setInterval(function () {
-        size *= 1.3;
+        size *= 1.4;
         skullElement.style.fontSize = size + "rem";
-
         if (size > 300) {
             clearInterval(skullInterval);
-            document.body.removeChild(skullElement);
-            // Inside triggerSkulls, after the skull disappears
-            triggerBloodDrip();
-
+            var elementsToRemove = document.querySelectorAll("#skull");
+            elementsToRemove.forEach(function (element) {
+                element.remove();
+            });
+            console.log("Skull reached 300px, triggering blood drip...");
+            showNewContent();
         }
     }, 100);
 }
@@ -73,37 +75,21 @@ function triggerSkulls() {
 function clearEffects() {
     if (confettiInterval) clearInterval(confettiInterval);
     if (skullInterval) clearInterval(skullInterval);
-
-    // Remove any existing skull elements
-    var existingSkulls = document.querySelectorAll("div");
-    existingSkulls.forEach(function (skull) {
-        if (skull.innerHTML === "💀") {
-            document.body.removeChild(skull);
-        }
-    });
 }
 
-function triggerBloodDrip() {
-    const dripCount = 20; // Number of droplets
-    for (let i = 0; i < dripCount; i++) {
-        const drop = document.createElement('div');
-        drop.classList.add('blood-drop');
+function showNewContent() {
+    var newContent = document.getElementById("new-content");
+    newContent.style.display = "block";
 
-        const size = Math.random() * 5 + 2; // Random size between 2 and 7px
-        drop.style.width = `${size}px`;
-        drop.style.height = `${size * 3}px`; // Make droplets elongated
+    var opacity = 1;
+    var fadeInterval = setInterval(function () {
+        opacity -= 0.017; // fade speed
+        newContent.style.opacity = opacity;
 
-        const delay = Math.random() * 5; // Random delay between 0 and 5 seconds
-        const duration = Math.random() * 2 + 3; // Duration between 3 and 5 seconds
-        const leftPosition = Math.random() * 100; // Random position across the width of the screen
-
-        drop.style.left = `${leftPosition}vw`;
-        drop.style.animationDuration = `${duration}s`;
-        drop.style.animationDelay = `${delay}s`;
-
-        document.body.appendChild(drop);
-
-        // Remove droplet after animation completes
-        setTimeout(() => drop.remove(), (delay + duration) * 1000);
-    }
+        if (opacity <= 0) {
+            clearInterval(fadeInterval);
+            newContent.style.display = "none";
+            newContent.style.opacity = 1;
+        }
+    }, 100); // fade frequency
 }
