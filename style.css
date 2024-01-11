@@ -1,0 +1,21 @@
+body{
+    background-color: #1e2633;
+}
+form{
+    width:1000px;
+    margin:100px auto;
+    color:white;
+}
+
+form label{
+    display: block;
+    text-align: center;
+}
+
+#result{
+    width: max-content;
+    background-color: rgba(128, 128, 128, 0.432);
+    display: block;
+    margin: 10px auto;
+    padding: 4px;
+}
