@@ -61,6 +61,7 @@ button:hover {
     border-radius: 5px;
     font-size: 24px; /* Larger font size for result */
     color: #007BFF; /* Blue result text color */
+	height: 30px;
 }
 
 #new-content{

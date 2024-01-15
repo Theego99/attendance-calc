@@ -17,8 +17,8 @@
             <br>
             <label for="missed"> 欠席回数: <input id="missed" type="number" value="5" onchange="calculatePercent()"> </label>
             <br>
-            <label for="late"> 遅刻回数: <input id="late" type="number" onchange="calculatePercent()"> </label>
-            <div id="result"></div>
+            <label for="late"> 遅刻回数: <input id="late" type="number" onchange="calculatePercent()" > </label>
+            <div id="result" onload="calculatePercent()"></div>
         </form>
     </div>
     
