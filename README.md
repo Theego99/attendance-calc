@@ -1,6 +1,3 @@
-
-Certainly! Here is the revised README in English for a website-based Attendance Rate Calculator:
-
 Attendance Rate Calculator Website README
 Introduction
 This document provides a guide on how to use the Attendance Rate Calculator website. Designed for schools and educational institutions, this web-based tool tracks student attendance and calculates attendance rates.
